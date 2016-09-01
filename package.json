@@ -1,19 +1,18 @@
 {
-  "name": "jose",
+  "name": "keychain",
   "version": "0.0.0",
-  "description": "JSON Object Signing and Encryption",
+  "description": "KeyChain for use with Web Cryptography API in Node.js",
   "main": "src/index.js",
   "directories": {
     "test": "test"
   },
   "scripts": {
     "test": "mocha test -w",
-    "karma": "karma start",
     "jsdoc": "jsdoc -c jsdoc.json -r"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/anvilresearch/jose.git"
+    "url": "https://github.com/anvilresearch/keychain.git"
   },
   "author": "",
   "contributors": [
@@ -30,9 +29,9 @@
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/anvilresearch/jose/issues"
+    "url": "https://github.com/anvilresearch/keychain/issues"
   },
-  "homepage": "https://github.com/anvilresearch/jose#README",
+  "homepage": "https://github.com/anvilresearch/keychain#README",
   "dependencies": {
     "base64url": "^1.0.6",
     "json-document": "0.0.0",
@@ -40,12 +39,6 @@
     "qs": "^6.2.0"
   },
   "devDependencies": {
-    "chai": "^3.5.0",
-    "karma": "^1.1.2",
-    "karma-chrome-launcher": "^1.0.1",
-    "karma-mocha": "^1.1.1",
-    "karma-webpack": "^1.7.0",
-    "mocha": "^3.0.0",
-    "webpack": "^1.13.1"
+    "chai": "^3.5.0"
   }
 }
