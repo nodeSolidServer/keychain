@@ -34,9 +34,7 @@
   "homepage": "https://github.com/anvilresearch/keychain#README",
   "dependencies": {
     "base64url": "^1.0.6",
-    "json-document": "0.0.0",
-    "pem-jwk": "^1.5.1",
-    "qs": "^6.2.0"
+    "webcrypto": "https://github.com/anvilresearch/webcrypto.git"
   },
   "devDependencies": {
     "chai": "^3.5.0"
