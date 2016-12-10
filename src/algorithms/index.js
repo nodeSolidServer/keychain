@@ -1,22 +1,26 @@
 /**
  * Dependencies
  */
-const RegisteredAlgorithms = require('./RegisteredAlgorithms')
+const SupportedAlgorithms = require('./SupportedAlgorithms')
 const RsaKeyPair = require('./RsaKeyPair')
 
 /**
- * Registered Algorithms
+ * Supported Algorithms
  */
-let registeredAlgorithms = new RegisteredAlgorithms()
+let supportedAlgorithms = new SupportedAlgorithms()
 
 /**
  * RSASSA-PKCS1-v1_5
  */
-registeredAlgorithms.define('RS256', RsaKeyPair)
-registeredAlgorithms.define('RS384', RsaKeyPair)
-registeredAlgorithms.define('RS512', RsaKeyPair)
+supportedAlgorithms.define('RS256', 'generateKey', RsaKeyPair)
+supportedAlgorithms.define('RS384', 'generateKey', RsaKeyPair)
+supportedAlgorithms.define('RS512', 'generateKey', RsaKeyPair)
+supportedAlgorithms.define('RS256', 'importKey', RsaKeyPair)
+supportedAlgorithms.define('RS384', 'importKey', RsaKeyPair)
+supportedAlgorithms.define('RS512', 'importKey', RsaKeyPair)
+
 
 /**
  * Export
  */
-module.exports = registeredAlgorithms
+module.exports = supportedAlgorithms

@@ -53,6 +53,19 @@ class RsaKeyPair {
   }
 
   /**
+   * importKey
+   */
+  importKey (jwk) {
+    let {name, hash} = this.algorithm
+    let algorithm = {name, hash}
+    let extractable = true
+    let usages = jwk.key_ops
+
+    return crypto.subtle
+      .importKey('jwk', jwk, algorithm, extractable, usages)
+  }
+
+  /**
    * setCryptoKeyPair
    */
   setCryptoKeyPair (cryptoKeyPair) {
