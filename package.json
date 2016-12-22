@@ -37,6 +37,7 @@
     "webcrypto": "https://github.com/anvilresearch/webcrypto.git"
   },
   "devDependencies": {
-    "chai": "^3.5.0"
+    "chai": "^3.5.0",
+    "mocha": "^3.2.0"
   }
 }
