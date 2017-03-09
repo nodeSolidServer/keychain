@@ -33,7 +33,7 @@
   },
   "homepage": "https://github.com/anvilresearch/keychain#README",
   "dependencies": {
-    "base64url": "^1.0.6",
+    "base64url": "^2.0.0",
     "webcrypto": "https://github.com/anvilresearch/webcrypto.git"
   },
   "devDependencies": {
