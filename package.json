@@ -1,6 +1,6 @@
 {
   "name": "@trust/keychain",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "KeyChain for use with Web Cryptography API in Node.js",
   "main": "src/index.js",
   "directories": {
