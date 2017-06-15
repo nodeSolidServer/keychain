@@ -26,7 +26,7 @@ class RsaKeyPair {
     let hash = { name: `SHA-${hashLength}` }
 
     if (!hashLength) {
-      throw new DataError('Invalid hash length')
+      throw new Error('Invalid hash length')
     }
 
     if (!modulusLength) {
