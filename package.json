@@ -7,7 +7,7 @@
     "test": "test"
   },
   "scripts": {
-    "test": "mocha test -w",
+    "test": "mocha test",
     "jsdoc": "jsdoc -c jsdoc.json -r"
   },
   "repository": {
@@ -41,7 +41,8 @@
     "@trust/webcrypto": "0.0.2"
   },
   "devDependencies": {
-    "chai": "^3.5.0",
-    "mocha": "^3.2.0"
+    "chai": "^4.0.2",
+    "dirty-chai": "^2.0.0",
+    "mocha": "^3.4.2"
   }
 }
