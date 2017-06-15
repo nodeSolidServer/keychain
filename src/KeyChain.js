@@ -1,7 +1,6 @@
 /**
  * Dependencies
  */
-const crypto = require('@trust/webcrypto')
 const base64url = require('base64url')
 const supportedAlgorithms = require('./algorithms')
 
