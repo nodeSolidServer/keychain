@@ -63,7 +63,7 @@ class SupportedAlgorithms {
     let registeredAlgorithms = this[op]
 
     if (!registeredAlgorithms) {
-      return new SyntaxError() // what kind of error should this be?
+      return new Error(`Operation '${op}' is not supported`)
     }
 
     let argument = registeredAlgorithms[alg]

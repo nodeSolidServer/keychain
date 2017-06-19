@@ -11,6 +11,12 @@ class RsaKeyPair {
 
   /**
    * constructor
+   *
+   * @param params {Object} Options hashmap
+   * @param params.alg {string} For example, 'RS256'
+   * @param params.modulusLength {number}
+   * @param params.publicExponent {BufferSource} For example, a Uint8Array
+   * @param params.usages {Array<string>}
    */
   constructor (params) {
     let name = 'RSASSA-PKCS1-v1_5'
@@ -20,7 +26,7 @@ class RsaKeyPair {
     let hash = { name: `SHA-${hashLength}` }
 
     if (!hashLength) {
-      throw new DataError('Invalid hash length')
+      throw new Error('Invalid hash length')
     }
 
     if (!modulusLength) {
