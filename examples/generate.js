@@ -6,7 +6,8 @@ let defaults = { alg: 'RS256', modulusLength: 2048 }
 let descriptor = {
   token: { sig: defaults },
   id_token: { sig: defaults },
-  userinfo: { enc: { alg: 'RS256', usages: ['sign', 'verify'] } }
+  userinfo: { enc: { alg: 'RS256', usages: ['sign', 'verify'] } },
+  other: { alg: 'KS256' }
 }
 
 KeyChain.generate(descriptor).then(keys => {
