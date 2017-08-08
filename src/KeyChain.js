@@ -3,6 +3,7 @@
  */
 const base64url = require('base64url')
 const supportedAlgorithms = require('./algorithms')
+const { JWT } = require('@trust/jose')
 
 /**
  * KeyChain
@@ -24,9 +25,10 @@ class KeyChain {
   /**
    * generate
    */
-  static generate (descriptor) {
+  static generate (descriptor, kek) {
     let keys = new KeyChain(descriptor)
-    return keys.rotate()
+    // create env var
+    return keys.rotate({kek})
   }
 
   /**
@@ -127,12 +129,15 @@ class KeyChain {
    * @param {Object} context
    * @returns {Promise}
    */
-  rotate ({source, container, jwks} = {}) {
+  rotate ({source, container, jwks, kek} = {}) {
     // initial call requires no arguments
     // these values are passed when recursing
     if (!source) { source = this.descriptor }
     if (!container) { container = this }
     if (!jwks) { jwks = this.jwks = { keys: [] } }
+    if (!kek) {
+      throw new Error("No key encryption key provided")
+    }
 
     // do as much in parallel as possible
     return Promise.all(
@@ -143,13 +148,24 @@ class KeyChain {
         // and add JWK for public key to JWK Set
         if (params.alg) {
           return KeyChain.generateKey(params).then(result => {
-            container[key] = result
+            // encrypt the private component before assignment
+            let plaintext = JSON.stringify(result.privateJwk)
+            return new JWT({
+              protected: { alg: "dir", enc: "A256GCM" },
+              plaintext,
+              serialization: 'flattened'
+            }).encrypt({
+              key: kek
+            }).then(encryptedKey => {
+              result.privateJwk = JSON.parse(encryptedKey)
 
-            if (result.publicJwk) {
-              jwks.keys.push(result.publicJwk)
-            }
+              container[key] = result
+
+              if (result.publicJwk) {
+                jwks.keys.push(result.publicJwk)
+              }
+            })
           })
-
         // recurse
         } else if (typeof params === 'object') {
 
@@ -160,7 +176,8 @@ class KeyChain {
           return this.rotate({
             source: source[key],
             container: container[key],
-            jwks
+            jwks,
+            kek
           })
 
         // invalid descriptor
