@@ -1,7 +1,7 @@
 /**
  * Dependencies
  */
-const crypto = require('@trust/webcrypto')
+const crypto = require('isomorphic-webcrypto')
 const base64url = require('base64url')
 
 /**
