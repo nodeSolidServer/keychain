@@ -67,4 +67,7 @@ $ npm test
 
 ## MIT License
 
+[The MIT License](LICENSE.md)
+
 Copyright (c) 2016 Anvil Research, Inc.
+Copyright (c) 2017-2019 The Solid Project
