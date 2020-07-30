@@ -7,7 +7,7 @@
     "test": "test"
   },
   "scripts": {
-    "test": "mocha test",
+    "test": "mocha --recursive test",
     "jsdoc": "jsdoc -c jsdoc.json -r"
   },
   "repository": {
@@ -37,12 +37,12 @@
   },
   "homepage": "https://github.com/solid/keychain#README",
   "dependencies": {
-    "base64url": "^3.0.1",
-    "isomorphic-webcrypto": "^2.3.2"
+    "@solid/jose": "^0.6.0",
+    "base64url": "^3.0.1"
   },
   "devDependencies": {
     "chai": "^4.2.0",
     "dirty-chai": "^2.0.1",
-    "mocha": "^6.2.2"
+    "mocha": "^8.0.1"
   }
 }
