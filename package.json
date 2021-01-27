@@ -38,7 +38,7 @@
   },
   "homepage": "https://github.com/solid/keychain#README",
   "dependencies": {
-    "@solid/jose": "^0.6.3",
+    "@solid/jose": "^0.6.5",
     "base64url": "^3.0.1"
   },
   "devDependencies": {
