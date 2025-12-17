@@ -1,6 +1,6 @@
 {
   "name": "@solid/keychain",
-  "version": "0.3.4",
+  "version": "0.3.5",
   "description": "KeyChain for use with Web Cryptography API in Node.js",
   "main": "src/index.js",
   "directories": {
@@ -38,12 +38,12 @@
   },
   "homepage": "https://github.com/solid/keychain#README",
   "dependencies": {
-    "@solid/jose": "^0.6.5",
+    "@solid/jose": "^0.6.9",
     "base64url": "^3.0.1"
   },
   "devDependencies": {
-    "chai": "^4.2.0",
+    "chai": "^4.5.0",
     "dirty-chai": "^2.0.1",
-    "mocha": "^8.2.1"
+    "mocha": "^11.7.5"
   }
 }
