@@ -38,12 +38,12 @@
   },
   "homepage": "https://github.com/solid/keychain#README",
   "dependencies": {
-    "@solid/jose": "^0.6.5",
+    "@solid/jose": "^0.6.9",
     "base64url": "^3.0.1"
   },
   "devDependencies": {
-    "chai": "^4.2.0",
+    "chai": "^4.5.0",
     "dirty-chai": "^2.0.1",
-    "mocha": "^8.2.1"
+    "mocha": "^11.7.5"
   }
 }
