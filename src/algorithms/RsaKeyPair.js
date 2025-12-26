@@ -17,6 +17,7 @@ class RsaKeyPair {
    * @param params.modulusLength {number}
    * @param params.publicExponent {BufferSource} For example, a Uint8Array
    * @param params.usages {Array<string>}
+   * @param params.crypto {Object} Optional crypto instance to use (for cross-package compatibility)
    */
   constructor (params) {
     let name = 'RSASSA-PKCS1-v1_5'
@@ -24,6 +25,9 @@ class RsaKeyPair {
     let hashLengthValid = alg.match(/(256|384|512)$/)
     let hashLength = hashLengthValid && hashLengthValid.shift()
     let hash = { name: `SHA-${hashLength}` }
+    
+    // Allow overriding crypto instance for cross-package compatibility
+    this.crypto = params.crypto || crypto
 
     if (!hashLength) {
       throw new Error('Invalid hash length')
@@ -52,10 +56,10 @@ class RsaKeyPair {
   generateKey () {
     let {algorithm, extractable, usages} = this
 
-    return crypto.subtle
+    return this.crypto.subtle
       .generateKey(algorithm, extractable, usages)
       .then(this.setCryptoKeyPair)
-      .then(this.setJwkKeyPair)
+      .then((result) => this.setJwkKeyPair(result))
   }
 
   /**
@@ -67,7 +71,7 @@ class RsaKeyPair {
     let extractable = true
     let usages = jwk.key_ops
 
-    return crypto.subtle
+    return this.crypto.subtle
       .importKey('jwk', jwk, algorithm, extractable, usages)
   }
 
@@ -95,18 +99,18 @@ class RsaKeyPair {
    */
   setJwkKeyPair (result) {
     return Promise.all([
-      crypto.subtle.exportKey('jwk', result.privateKey),
-      crypto.subtle.exportKey('jwk', result.publicKey)
+      this.crypto.subtle.exportKey('jwk', result.privateKey),
+      this.crypto.subtle.exportKey('jwk', result.publicKey)
     ])
     .then(jwks => {
       let [privateJwk, publicJwk] = jwks
 
       result.privateJwk = Object.assign({
-        kid: base64url(Buffer.from(crypto.getRandomValues(new Uint8Array(8))))
+        kid: base64url(Buffer.from(this.crypto.getRandomValues(new Uint8Array(8))))
       }, privateJwk)
 
       result.publicJwk = Object.assign({
-        kid: base64url(Buffer.from(crypto.getRandomValues(new Uint8Array(8))))
+        kid: base64url(Buffer.from(this.crypto.getRandomValues(new Uint8Array(8))))
       }, publicJwk)
 
       return result
