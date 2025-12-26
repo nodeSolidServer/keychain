@@ -17,7 +17,7 @@ let expect = chai.expect
  */
 const KeyChain = require('../src/index')
 
-const testKeys = require('./resources/keys.json')
+const testKeys = require('./resources/RS256-keys.json')
 
 describe('KeyChain', () => {
   describe('constructor', () => {

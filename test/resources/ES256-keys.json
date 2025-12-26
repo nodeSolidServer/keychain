@@ -1,0 +1,38 @@
+{
+  "keys": {
+    "descriptor": {
+      "id_token": {
+        "signing": {
+          "ES256": {
+            "alg": "ES256",
+            "namedCurve": "P-256"
+          },
+          "ES384": {
+            "alg": "ES384",
+            "namedCurve": "P-384"
+          },
+          "ES512": {
+            "alg": "ES512",
+            "namedCurve": "P-521"
+          }
+        }
+      },
+      "token": {
+        "signing": {
+          "ES256": {
+            "alg": "ES256",
+            "namedCurve": "P-256"
+          }
+        }
+      },
+      "register": {
+        "signing": {
+          "ES256": {
+            "alg": "ES256",
+            "namedCurve": "P-256"
+          }
+        }
+      }
+    }
+  }
+}
